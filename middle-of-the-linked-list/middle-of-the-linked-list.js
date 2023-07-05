@@ -10,18 +10,17 @@
  * @return {ListNode}
  */
 var middleNode = function(head) {
-    let listSize = 0;
-    let node = head;
-    while(node) {
-        listSize++;
-        node = node.next
+    //two pointers method
+    let fastPointer = head;
+    let slowPointer = head;
+    while(fastPointer) {
+        temp = fastPointer.next;
+        if (temp) {
+            fastPointer = temp.next
+            slowPointer = slowPointer.next;
+        } else {
+            fastPointer = temp;
+        }
     }
-    const middleIndex = Math.trunc(listSize / 2);
-    let middleNode = head;
-    let counter = 0;
-    while(counter < middleIndex) {
-        counter++;
-        middleNode = middleNode.next
-    }
-    return middleNode;
+    return slowPointer;
 };
