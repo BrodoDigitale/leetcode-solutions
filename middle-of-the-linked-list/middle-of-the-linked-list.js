@@ -10,17 +10,12 @@
  * @return {ListNode}
  */
 var middleNode = function(head) {
-    //two pointers method
+    //two pointers method IMPROVED
     let fastPointer = head;
     let slowPointer = head;
-    while(fastPointer) {
-        temp = fastPointer.next;
-        if (temp) {
-            fastPointer = temp.next
+    while(fastPointer && fastPointer.next) {
+            fastPointer = fastPointer.next.next;
             slowPointer = slowPointer.next;
-        } else {
-            fastPointer = temp;
-        }
     }
     return slowPointer;
 };
