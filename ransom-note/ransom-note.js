@@ -20,7 +20,7 @@ var canConstruct = function(ransomNote, magazine) {
         if(!letters[char]) return false;
         letters[char]--;
     }
-    console.log(letters)
+    
     return true;
 
 };
