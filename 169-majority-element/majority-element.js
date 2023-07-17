@@ -3,25 +3,15 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    if(nums.length === 1) {
-        return nums[0];
-    }
+    //applying Boyer–Moore majority vote algorithm
     let count = 0;
-    let most_frequent_el = nums[0];
-    let major_frequency = 0;
-    while (count < nums.length) {
-        let frequency = 0;
-        let el = nums[count];
-        nums.forEach(e => {
-            if(e === el) {
-                frequency++;
-            }
-        })
-        if(frequency > major_frequency) {
-            most_frequent_el = el;
-            major_frequency = frequency;
+    let most_frequent_el;
+
+    for (const num of nums) {
+        if(count === 0) {
+            most_frequent_el = num;
         }
-        count++;
+        count += (num === most_frequent_el) ? 1 : -1;
     }
     return most_frequent_el;
 };
