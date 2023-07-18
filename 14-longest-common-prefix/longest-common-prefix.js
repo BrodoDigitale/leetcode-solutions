@@ -10,7 +10,7 @@ var longestCommonPrefix = function(strs) {
         if(arr.length === strs.length) {
             prefix += strs[0][idx];
         } else {
-            return prefix;
+            break;
         }
     }
     return prefix;
