@@ -5,14 +5,15 @@
 var maximumNumberOfStringPairs = function(words) {
     let counter = 0;
 
-    for(let i = 0; i < words.length - 1; i++) {
-        let word = words[i];
-        for(let j = i + 1; j < words.length; j++) {
+    let dict = {}
 
-            let reversed = words[j].split('').reverse().join('');
-            if(word === reversed) {
-                counter++;
-            }
+    for(let word of words) {
+        let reversed = word.split('').reverse().join('');
+        if(dict[reversed]) {
+            dict[reversed]--;
+            counter++;
+        } else {
+            dict[word] = (dict[word] || 0 ) + 1;
         }
     }
     return counter;
